@@ -44,7 +44,6 @@ local function multiter(start, finish)
 	end)
 end
 
--- this is reset before each bind() recursive call
 local variableLetters = range(('AZ'):byte(1,2)):mapi(function(ch) return string.char(ch) end)
 
 --[[
@@ -57,7 +56,7 @@ bmax = max of bi ... stop once it is past this
 local function bind(terms, termMax, bref, bi, bmax, results, vardegs)
 	if bi > bmax then return end
 	
-	bref = bref or Tensor.Ref(var(variableLetters[#termMax+1]))
+	bref = bref or Tensor.Ref(var(variableLetters[#terms+1]))
 	local aexpr = tableToMul(terms)
 
 --print('expr: ' .. (aexpr * bref))
@@ -106,29 +105,24 @@ local function bind(terms, termMax, bref, bi, bmax, results, vardegs)
 		local prod = (aexpr * bref)
 
 		if bi == bmax then
-			-- TODO here instead of printing ... 
-			-- instead increment the "currentNumVars"
-			-- store aexpr * bref => aexpr
-			-- and process it again for a new bref
 
 			local nextterms = table(terms)
 			nextterms:insert(bref)
 			if #nextterms >= termMax then 
 				results:insert{expr=prod, degree=#prod:getIndexesUsed()}
-				return 
+			else
+				bind(nextterms, termMax, nil, 1, vardegs[#nextterms+1], results, vardegs)
 			end
-			
-			bind(nextterms, termMax, nil, 1, vardegs[#nextterms+1], results, vardegs)
-
 		elseif bi < bmax then
 			bind(table(terms), termMax, bref, bi+1, bmax, results, vardegs)
 		end
 	end
 end
 
+-- TODO numvars==1 isn't working
 for numvars=2,3 do
 	print('num vars = '..numvars)
-	for maxdegree=1,2 do
+	for maxdegree=1,3 do
 		print('max degree = '..maxdegree)
 		local startdeg = range(numvars):mapi(function(i) return i==1 and maxdegree or 1 end)
 		local enddeg = range(numvars):mapi(function(i) return maxdegree end)
@@ -136,18 +130,7 @@ for numvars=2,3 do
 			print('degree for each var: '..require'ext.tolua'(vardegs))
 			print()
 			
-			-- expr = 1
-			-- fixed = expr:getIndexesUsed() = {}
-			-- then cycle through all possible index places of a
-			-- then for each index place, assign to one of the set of {all fixed symbols of expr, union a new symbol}
-			
-			-- ok now for each index of 'b', cycle thru all 'a's indexes (or a new index)
-			
 			local terms = table()
-			--[[
-			local aexpr = var(variableLetters:remove(1))( range(vardegs[1]):mapi(function(i) return ' _'..Tensor.defaultSymbols[i] end):concat() )
-			terms:insert(aexpr)
-			--]]
 			local results = table()
 			bind(terms, numvars, nil, 1, vardegs[#terms+1], results, vardegs)
 			results:sort(function(a,b) return a.degree < b.degree end)
