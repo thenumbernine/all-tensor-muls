@@ -45,7 +45,7 @@ local function multiter(start, finish)
 end
 
 -- this is reset before each bind() recursive call
-local variableLetters
+local variableLetters = range(('AZ'):byte(1,2)):mapi(function(ch) return string.char(ch) end)
 
 --[[
 aexpr = structure so far
@@ -57,7 +57,7 @@ bmax = max of bi ... stop once it is past this
 local function bind(terms, termMax, bref, bi, bmax, results, vardegs)
 	if bi > bmax then return end
 	
-	bref = bref or Tensor.Ref(var(variableLetters:remove(1)))
+	bref = bref or Tensor.Ref(var(variableLetters[#termMax+1]))
 	local aexpr = tableToMul(terms)
 
 --print('expr: ' .. (aexpr * bref))
@@ -135,8 +135,6 @@ for numvars=2,3 do
 		for vardegs in multiter(startdeg, enddeg) do
 			print('degree for each var: '..require'ext.tolua'(vardegs))
 			print()
-
-			variableLetters = range(('AZ'):byte(1,2)):mapi(function(ch) return string.char(ch) end)
 			
 			-- expr = 1
 			-- fixed = expr:getIndexesUsed() = {}
@@ -155,7 +153,6 @@ for numvars=2,3 do
 			results:sort(function(a,b) return a.degree < b.degree end)
 			for _,result in ipairs(results) do
 				print('expr: '..result.expr, 'degree: '..result.degree)
-		
 			end
 			print()
 		end
