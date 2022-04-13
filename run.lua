@@ -44,6 +44,9 @@ local function multiter(start, finish)
 	end)
 end
 
+-- this is reset before each bind() recursive call
+local variableLetters
+
 --[[
 aexpr = structure so far
 aindexes = options to set the symbol of bref[1+bi] to 
@@ -54,7 +57,7 @@ bmax = max of bi ... stop once it is past this
 local function bind(terms, bref, bi, bmax, results)
 	if bi > bmax then return end
 	
-	bref = bref or Tensor.Ref(var'B')
+	bref = bref or Tensor.Ref(var(variableLetters:remove(1)))
 	local aexpr = tableToMul(terms)
 
 --print('expr: ' .. (aexpr * bref))
@@ -119,6 +122,8 @@ for numvars=2,2 do
 	print('num vars = '..numvars)
 	for maxdegree=1,3 do
 		print('max degree = '..maxdegree)
+		
+		variableLetters = range(('AZ'):byte(1,2)):mapi(function(ch) return string.char(ch) end)
 		for vardegs in multiter({maxdegree,1}, {maxdegree, maxdegree}) do
 			print('degree for each var:')
 			print(require'ext.tolua'(vardegs))
@@ -129,7 +134,7 @@ for numvars=2,2 do
 			-- then cycle through all possible index places of a
 			-- then for each index place, assign to one of the set of {all fixed symbols of expr, union a new symbol}
 			
-			local aexpr = var'A'( range(vardegs[1]):mapi(function(i) return ' _'..Tensor.defaultSymbols[i] end):concat() )
+			local aexpr = var(variableLetters:remove(1))( range(vardegs[1]):mapi(function(i) return ' _'..Tensor.defaultSymbols[i] end):concat() )
 			-- ok now for each index of 'b', cycle thru all 'a's indexes (or a new index)
 			
 			local results = table()
