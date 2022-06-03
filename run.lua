@@ -12,6 +12,7 @@ local range = require 'ext.range'
 local math = require 'ext.math'
 local symmath = require 'symmath'
 local tolua = require 'ext.tolua'
+
 local var = symmath.var
 local Tensor = symmath.Tensor
 local tableToMul = symmath.tableToMul
@@ -164,6 +165,11 @@ local function bind(terms, termMax, bref, bi, results, vardegs)
 end
 
 local OutputAllExprs = class()
+function OutputAllExprs:init(args)
+	if args.latex then
+		symmath.tostring = symmath.export.LaTeX
+	end
+end
 function OutputAllExprs:output(vardegs, results, numResultsPerDegree)
 	-- #vardegs == maxdegree
 	io.write('for degrees: '..tolua(vardegs))
@@ -254,8 +260,9 @@ end
 
 local output = ({
 	exprs = OutputAllExprs,				-- print all expressions
+	exprs_latex = function() return OutputAllExprs{latex=true} end,				-- print all expressions
 	count = OutputCounts,				-- just print the counts
-	markdown = OutputCountsMarkdown,	-- print counts in a markdown table
+	count_md = OutputCountsMarkdown,	-- print counts in a markdown table
 })[cmdline.output or 'count']()
 
 for numvars=2,maxnumvars do

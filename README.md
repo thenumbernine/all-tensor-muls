@@ -1,4 +1,4 @@
-Look at all combinations of n many multiplications of tensors of degree $i_1 ... i_n$.
+Look at all combinations of $n$ many multiplications of tensors of degree $i_1 ... i_n$.
 Bin the results by output degree.
 
 command-line options:
@@ -8,8 +8,9 @@ maxdegree=# (3 by default) - maximum degree of input tensors.
 numvars=# (4 by default) - maximum number of input tensors.
 
 output=exprs - Show all unique expressions.
+output=exprs_latex - Show all unique expressions in LaTeX.
 output=count (default) - Show counts per-output-degree.
-output=markdown - Show counts per-output-degree in a markdown table (like you see below).
+output=count_md - Show counts per-output-degree in a markdown table (like you see below).
 
 factors (false by default) - Print the prime factorization of the counts.
 ```
@@ -89,79 +90,78 @@ Prime factorization of the above:
 
 example: all tensor producs of up to 2 variables each with up to 3 degree:
 
-```text
 for degrees: {1, 1}
-A^a * B^a	degree: 0
-A^a * B^b	degree: 2
+expr: ${{{ A} ^a}} {{{ B} ^a}}$	degree: 0
+expr: ${{{ A} ^a}} {{{ B} ^b}}$	degree: 2
 
 for degrees: {2, 1}
-A^ab * B^a	degree: 1
-A^ab * B^b	degree: 1
-A^ab * B^c	degree: 3
+expr: ${{{{ A} ^a} ^b}} {{{ B} ^a}}$	degree: 1
+expr: ${{{{ A} ^a} ^b}} {{{ B} ^b}}$	degree: 1
+expr: ${{{{ A} ^a} ^b}} {{{ B} ^c}}$	degree: 3
 
 for degrees: {2, 2}
-A^ab * B^ab	degree: 0
-A^ab * B^ba	degree: 0
-A^ab * B^ca	degree: 2
-A^ab * B^cb	degree: 2
-A^ab * B^bc	degree: 2
-A^ab * B^ac	degree: 2
-A^ab * B^cd	degree: 4
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^a} ^b}}$	degree: 0
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^b} ^a}}$	degree: 0
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^a}}$	degree: 2
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^b}}$	degree: 2
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^b} ^c}}$	degree: 2
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^a} ^c}}$	degree: 2
+expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^d}}$	degree: 4
 
 for degrees: {3, 1}
-A^abc * B^a	degree: 2
-A^abc * B^c	degree: 2
-A^abc * B^b	degree: 2
-A^abc * B^d	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^a}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^c}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^b}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^d}}$	degree: 4
 
 for degrees: {3, 2}
-A^abc * B^ab	degree: 1
-A^abc * B^bc	degree: 1
-A^abc * B^cb	degree: 1
-A^abc * B^ba	degree: 1
-A^abc * B^ca	degree: 1
-A^abc * B^ac	degree: 1
-A^abc * B^bd	degree: 3
-A^abc * B^db	degree: 3
-A^abc * B^da	degree: 3
-A^abc * B^cd	degree: 3
-A^abc * B^dc	degree: 3
-A^abc * B^ad	degree: 3
-A^abc * B^de	degree: 5
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^b}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^c}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^b}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^a}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^a}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^c}}$	degree: 1
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^d}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^b}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^a}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^d}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^c}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^d}}$	degree: 3
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^e}}$	degree: 5
 
 for degrees: {3, 3}
-A^abc * B^abc	degree: 0
-A^abc * B^bca	degree: 0
-A^abc * B^cab	degree: 0
-A^abc * B^bac	degree: 0
-A^abc * B^cba	degree: 0
-A^abc * B^acb	degree: 0
-A^abc * B^dac	degree: 2
-A^abc * B^adc	degree: 2
-A^abc * B^dab	degree: 2
-A^abc * B^adb	degree: 2
-A^abc * B^cda	degree: 2
-A^abc * B^dba	degree: 2
-A^abc * B^dca	degree: 2
-A^abc * B^dbc	degree: 2
-A^abc * B^dcb	degree: 2
-A^abc * B^cbd	degree: 2
-A^abc * B^cdb	degree: 2
-A^abc * B^cad	degree: 2
-A^abc * B^bda	degree: 2
-A^abc * B^bcd	degree: 2
-A^abc * B^acd	degree: 2
-A^abc * B^bdc	degree: 2
-A^abc * B^bad	degree: 2
-A^abc * B^abd	degree: 2
-A^abc * B^dce	degree: 4
-A^abc * B^dae	degree: 4
-A^abc * B^dea	degree: 4
-A^abc * B^deb	degree: 4
-A^abc * B^cde	degree: 4
-A^abc * B^ade	degree: 4
-A^abc * B^dec	degree: 4
-A^abc * B^dbe	degree: 4
-A^abc * B^bde	degree: 4
-A^abc * B^def	degree: 6
-```
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^b} ^c}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^c} ^a}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^a} ^b}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^a} ^c}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^b} ^a}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^c} ^b}}$	degree: 0
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^c}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^c}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^b}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^b}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^a}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^a}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^a}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^c}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^b}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^b} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^b}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^a} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^a}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^c} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^c} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^c}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^a} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^b} ^d}}$	degree: 2
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^a}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^b}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^c}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^f}}$	degree: 6
+
