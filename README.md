@@ -92,37 +92,37 @@ example: all tensor producs of up to 2 variables each with up to 3 degree:
 
 for degrees: {1, 1}
 
-expr: ${{{ A} _a}} {{{ B} _a}}$	degree: 0
+expr: ${{{ A} _a}} {{{ B} _a}}$	degree: 0 (inner product)
 
-expr: ${{{ A} _a}} {{{ B} _b}}$	degree: 2
+expr: ${{{ A} _a}} {{{ B} _b}}$	degree: 2 (outer product)
 
 
 
 for degrees: {2, 1}
 
-expr: ${{{{ A} _a} _b}} {{{ B} _a}}$	degree: 1
+expr: ${{{{ A} _a} _b}} {{{ B} _a}}$	degree: 1 (vector-matrix left-multiply)
 
-expr: ${{{{ A} _a} _b}} {{{ B} _b}}$	degree: 1
+expr: ${{{{ A} _a} _b}} {{{ B} _b}}$	degree: 1 (vector-matrix right-multiply)
 
-expr: ${{{{ A} _a} _b}} {{{ B} _c}}$	degree: 3
+expr: ${{{{ A} _a} _b}} {{{ B} _c}}$	degree: 3 (outer product)
 
 
 
 for degrees: {2, 2}
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _a} _b}}$	degree: 0
+expr: ${{{{ A} _a} _b}} {{{{ B} _a} _b}}$	degree: 0 (Frobenius inner of A and B', i.e. tr(A B'))
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _b} _a}}$	degree: 0
+expr: ${{{{ A} _a} _b}} {{{{ B} _b} _a}}$	degree: 0 (Frobenius inner of A and B, i.e. tr(A B))
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _c} _a}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _a}}$	degree: 2 (B A = (A' B')')
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _c} _b}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _b}}$	degree: 2 (A B' = (B A')')
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _b} _c}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _b} _c}}$	degree: 2 (A B = (B' A')')
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _a} _c}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _a} _c}}$	degree: 2 (B' A = (A' B)')
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _c} _d}}$	degree: 4
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _d}}$	degree: 4 (outer product)
 
 
 
