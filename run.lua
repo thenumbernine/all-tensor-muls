@@ -9,6 +9,7 @@ then search through all max degree of a tensor
 local class = require 'ext.class'
 local table = require 'ext.table'
 local range = require 'ext.range'
+local math = require 'ext.math'
 local symmath = require 'symmath'
 local tolua = require 'ext.tolua'
 local var = symmath.var
@@ -184,7 +185,11 @@ function OutputCounts:output(vardegs, results, numResultsPerDegree)
 	--]=]
 	-- [=[
 	for _,k in ipairs(table.keys(numResultsPerDegree):sort()) do
-		io.write(' '..k..'->'..numResultsPerDegree[k])
+		local v = numResultsPerDegree[k]
+		if cmdline.factors then
+			v = v == 1 and '1' or math.primeFactorization(v):concat','
+		end
+		io.write(' '..k..'->'..v)
 	end
 	print()
 end
@@ -207,6 +212,10 @@ function OutputCountsMarkdown:output(vardegs, results, numResultsPerDegree)
 	
 	for k=0,(table.keys(numResultsPerDegree):sup()) do
 		local v = numResultsPerDegree[k]
+		if v and cmdline.factors then
+			v = v == 1 and '1' or math.primeFactorization(v):concat','
+		end
+		v = v or ''
 		row:insert(tostring(v or ''))
 	end
 end
