@@ -110,9 +110,9 @@ expr: ${{{{ A} _a} _b}} {{{ B} _c}}$	degree: 3 (outer product)
 
 for degrees: {2, 2}
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _a} _b}}$	degree: 0 (Frobenius inner of A and B', i.e. tr(A B'))
+expr: ${{{{ A} _a} _b}} {{{{ B} _a} _b}}$	degree: 0 (Frobenius inner of A and B, i.e. tr(A' B))
 
-expr: ${{{{ A} _a} _b}} {{{{ B} _b} _a}}$	degree: 0 (Frobenius inner of A and B, i.e. tr(A B))
+expr: ${{{{ A} _a} _b}} {{{{ B} _b} _a}}$	degree: 0 (Frobenius inner of A and B', i.e. tr(A B))
 
 expr: ${{{{ A} _a} _b}} {{{{ B} _c} _a}}$	degree: 2 (B A = (A' B')')
 
