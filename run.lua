@@ -12,98 +12,18 @@ local range = require 'ext.range'
 local math = require 'ext.math'
 local symmath = require 'symmath'
 local tolua = require 'ext.tolua'
+local decreasingMultiIter = require 'decreasingmultiiter'
+local cmdline = require 'ext.cmdline'(...)
 
 local var = symmath.var
 local Tensor = symmath.Tensor
 local tableToMul = symmath.tableToMul
-
-local cmdline = require 'ext.cmdline'(...)
 
 --symmath.tostring = symmath.export.SingleLine
 
 local allmaxdegree = tonumber(cmdline.maxdegree) or 3
 local maxnumvars = tonumber(cmdline.numvars) or 4
 
--- do i have that somewhere?
-local function multiter(start, finish)
-	local numvars = #start
-	assert(numvars == #finish)
-	return coroutine.wrap(function()
-		local vardegs = {}
-		for i=1,#start do
-			vardegs[i] = start[i]
-		end
-		local done
-		while true do
-			coroutine.yield(vardegs)
-			for i=1,numvars do
-				vardegs[i] = vardegs[i] + 1
-				if vardegs[i] <= finish[i] then
-					break
-				else
-					vardegs[i] = start[i]
-					if i == numvars then
-						done = true
-						break
-					end
-				end
-			end
-			if done then break end
-		end
-	end)
-end
-
--- same but only iterate over increasing tuples
---[=[ i'm too dumb to get the ranges correct,...
-local function deciter(start, finish)
-	local numvars = #start
-	assert(numvars == #finish)
-	return coroutine.wrap(function()
-		local vardegs = {}
-		for i=1,#start do
-			vardegs[i] = start[i]
-		end
-		local done
-		while true do
-			coroutine.yield(vardegs)
-			for i=1,numvars do
-				vardegs[i] = vardegs[i] + 1
-				if vardegs[i] <= finish[i] then
-					break
-				else
-					if i == numvars then
-						done = true
-						break
-					end
-					vardegs[i] = start[i]
-					--[[
-					for j=i-1,1,-1 do
-						vardegs[j] = math.max(vardegs[j], vardegs[i])
-					end
-					vardegs[i+1] = vardegs[i+1]-1	-- undo the next inc
-					--]]
-				end
-			end
-			if done then break end
-		end
-	end)
-end
---]=]
--- [=[ ... so i'm just going to discard invalid iterations ... should go a bit slower than it could
-local function deciter(start, finish)
-	return coroutine.wrap(function()
-		for i in multiter(start, finish) do
-			local fail
-			for j=1,#i-1 do
-				if i[j] < i[j+1] then fail = true break end
-			end
-			if not fail then
-				coroutine.yield(i)
-			end
-		end
-	end)
-end
---]=]
 
 local variableLetters = range(('AZ'):byte(1,2)):mapi(function(ch) return string.char(ch) end)
 
@@ -272,8 +192,8 @@ for numvars=2,maxnumvars do
 		local startdeg = range(numvars-1):mapi(function(i) return 1 end)
 		local enddeg = range(numvars-1):mapi(function(i) return maxdegree end)
 		-- TODO make sure all unique permutations are iterated over
-		--for vardegs in multiter(startdeg, enddeg) do
-		for vardegs in deciter(startdeg, enddeg) do
+		--for vardegs in multiIter(startdeg, enddeg) do
+		for vardegs in decreasingMultiIter(startdeg, enddeg) do
 			vardegs = table(vardegs)
 			vardegs:insert(1, maxdegree)
 			
