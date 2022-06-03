@@ -1,4 +1,4 @@
-Look at all combinations of N many multiplications of tensors of degree I1 ... IN.
+Look at all combinations of n many multiplications of tensors of degree $i_1 ... i_n$.
 Bin the results by output degree.
 
 command-line options:
