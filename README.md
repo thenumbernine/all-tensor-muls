@@ -4,11 +4,14 @@ Bin the results by output degree.
 command-line options:
 
 ```text
+maxdegree=# (3 by default) - maximum degree of input tensors.
+numvars=# (4 by default) - maximum number of input tensors.
+
 output=exprs - Show all unique expressions.
-output=count - Show counts per-output-degree.
+output=count (default) - Show counts per-output-degree.
 output=markdown - Show counts per-output-degree in a markdown table (like you see below).
 
-factors - Print the prime factorization of the counts.
+factors (false by default) - Print the prime factorization of the counts.
 ```
 
 Input degrees vs counts per degree:

@@ -20,8 +20,8 @@ local cmdline = require 'ext.cmdline'(...)
 
 --symmath.tostring = symmath.export.SingleLine
 
-local allmaxdegree = 3
-local maxnumvars = 4
+local allmaxdegree = tonumber(cmdline.maxdegree) or 3
+local maxnumvars = tonumber(cmdline.numvars) or 4
 
 -- do i have that somewhere?
 local function multiter(start, finish)
