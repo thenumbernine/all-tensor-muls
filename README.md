@@ -15,6 +15,20 @@ output=count_md - Show counts per-output-degree in a markdown table (like you se
 factors (false by default) - Print the prime factorization of the counts.
 ```
 
+Let $c_{j; i_1 ... i_n}$ be the total number of unique $j$-degree output tensors for $n$ input tensors of degree $i_1 ... i_n$.
+
+For no inputs, the only output is a single 0-degree tensor, the value 0 itself, so the number of 1-degree outputs is 1 and all other counts are zero: $c_{j;} = \delta_{j \ 0}$.
+
+For one input of degree $i_1$, the number of outputs is 1 $j$-degree tensor, so $c_{j; \ i_1} = \delta_{j \ i_i}$.
+
+For two inputs of degrees $i_1$ and $i_2$:
+
+The number of 0-degree outputs is $c_{0; \ i_1 \ i_2} = \delta_{i_1 \ i_2} \cdot i_1!$.
+
+The number of 1-degree outputs is $c_{1; \ i_1 \ i_2} = \delta_{i_1 \ i_2 + 1} \cdot i_1! + \delta_{i_1 + 1 \ i_2} \cdot i_2!$.
+
+The number of 2-degree outputs is $c_{2; \ i_1 \ i_2} = \delta_{i_1 \ i_2} \cdot i_1 \cdot i_1! + \delta_{i_1 \ i_2 + 2} \cdot \frac{i_1!}{2} + \delta_{i_1 + 2 \ i_2} \cdot \frac{i_2!}{2}$.
+
 Input degrees vs counts per degree:
 
 |  |  |  |  | |0    |1    |2     |3    |4     |5    |6    |7   |8   |9  |10 |11 |12 |
