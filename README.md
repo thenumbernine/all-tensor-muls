@@ -92,151 +92,151 @@ example: all tensor producs of up to 2 variables each with up to 3 degree:
 
 for degrees: {1, 1}
 
-expr: ${{{ A} ^a}} {{{ B} ^a}}$	degree: 0
+expr: ${{{ A} _a}} {{{ B} _a}}$	degree: 0
 
-expr: ${{{ A} ^a}} {{{ B} ^b}}$	degree: 2
+expr: ${{{ A} _a}} {{{ B} _b}}$	degree: 2
 
 
 
 for degrees: {2, 1}
 
-expr: ${{{{ A} ^a} ^b}} {{{ B} ^a}}$	degree: 1
+expr: ${{{{ A} _a} _b}} {{{ B} _a}}$	degree: 1
 
-expr: ${{{{ A} ^a} ^b}} {{{ B} ^b}}$	degree: 1
+expr: ${{{{ A} _a} _b}} {{{ B} _b}}$	degree: 1
 
-expr: ${{{{ A} ^a} ^b}} {{{ B} ^c}}$	degree: 3
+expr: ${{{{ A} _a} _b}} {{{ B} _c}}$	degree: 3
 
 
 
 for degrees: {2, 2}
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^a} ^b}}$	degree: 0
+expr: ${{{{ A} _a} _b}} {{{{ B} _a} _b}}$	degree: 0
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^b} ^a}}$	degree: 0
+expr: ${{{{ A} _a} _b}} {{{{ B} _b} _a}}$	degree: 0
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^a}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _a}}$	degree: 2
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^b}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _b}}$	degree: 2
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^b} ^c}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _b} _c}}$	degree: 2
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^a} ^c}}$	degree: 2
+expr: ${{{{ A} _a} _b}} {{{{ B} _a} _c}}$	degree: 2
 
-expr: ${{{{ A} ^a} ^b}} {{{{ B} ^c} ^d}}$	degree: 4
+expr: ${{{{ A} _a} _b}} {{{{ B} _c} _d}}$	degree: 4
 
 
 
 for degrees: {3, 1}
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^a}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{ B} _a}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^c}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{ B} _c}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^b}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{ B} _b}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{ B} ^d}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{ B} _d}}$	degree: 4
 
 
 
 for degrees: {3, 2}
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^b}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _a} _b}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^c}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _b} _c}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^b}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _c} _b}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^a}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _b} _a}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^a}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _c} _a}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^c}}$	degree: 1
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _a} _c}}$	degree: 1
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^b} ^d}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _b} _d}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^b}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _d} _b}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^a}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _d} _a}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^c} ^d}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _c} _d}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^c}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _d} _c}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^a} ^d}}$	degree: 3
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _a} _d}}$	degree: 3
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{ B} ^d} ^e}}$	degree: 5
+expr: ${{{{{ A} _a} _b} _c}} {{{{ B} _d} _e}}$	degree: 5
 
 
 
 for degrees: {3, 3}
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^b} ^c}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _b} _c}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^c} ^a}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _c} _a}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^a} ^b}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _a} _b}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^a} ^c}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _a} _c}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^b} ^a}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _b} _a}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^c} ^b}}$	degree: 0
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _c} _b}}$	degree: 0
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^c}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _a} _c}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^c}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _d} _c}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^b}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _a} _b}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^b}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _d} _b}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^a}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _d} _a}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^a}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _b} _a}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^a}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _c} _a}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^c}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _b} _c}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^b}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _c} _b}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^b} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _b} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^b}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _d} _b}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^a} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _a} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^a}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _d} _a}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^c} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _c} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^c} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _c} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^c}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _d} _c}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^a} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _a} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^b} ^d}}$	degree: 2
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _b} _d}}$	degree: 2
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^c} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _c} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^a} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _a} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^a}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _e} _a}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^b}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _e} _b}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^c} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _c} _d} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^a} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _a} _d} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^c}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _e} _c}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^b} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _b} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^b} ^d} ^e}}$	degree: 4
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _b} _d} _e}}$	degree: 4
 
-expr: ${{{{{ A} ^a} ^b} ^c}} {{{{{ B} ^d} ^e} ^f}}$	degree: 6
+expr: ${{{{{ A} _a} _b} _c}} {{{{{ B} _d} _e} _f}}$	degree: 6
 
 
 

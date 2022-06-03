@@ -145,11 +145,11 @@ local function bind(terms, termMax, bref, bi, results, vardegs)
 		end)
 	end)
 	
-	symbols:insert(Tensor.Index{symbol=newsymbol})
+	symbols:insert(Tensor.Index{lower=true, symbol=newsymbol})
 	for _,srci in ipairs(symbols) do
 		bref = bref:clone()
 		bref[1+bi] = Tensor.Index{
-			lower = false,
+			lower = true,
 			symbol = srci.symbol,
 		}
 		if bi < vardegs[#terms+1] then
