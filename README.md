@@ -1,4 +1,4 @@
-Look at all combinations of $n$ many multiplications of tensors of degree $i_1 ... i_n$.
+Look at all combinations of $n$ many multiplications of tensors of degree $i\_1 ... i\_n$.
 Bin the results by output degree.
 
 <hr>
